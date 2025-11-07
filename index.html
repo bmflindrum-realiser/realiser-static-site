@@ -1,93 +1,228 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>realiser.ai – Bygg bro mellom AI og arbeidshverdagen</title>
-  <meta name="description" content="Vi hjelper virksomheter å ta AI i bruk i praksis – trygt, konkret og lavterskel. realiser.ai gjør kunstig intelligens til en naturlig del av arbeidshverdagen.">
-  <link rel="canonical" href="https://realiser.ai/">
-  <meta name="robots" content="index, follow">
-  <meta name="keywords" content="AI i praksis, kunstig intelligens, implementering, kompetansebygging, endringsledelse, digital transformasjon">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="realiser.ai – Bygg bro mellom AI og arbeidshverdagen">
-  <meta property="og:description" content="Vi hjelper virksomheter å ta AI i bruk i praksis – trygt, konkret og lavterskel.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://realiser.ai/">
-  <meta property="og:image" content="https://realiser.ai/og-cover.jpg">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="realiser.ai – Bygg bro mellom AI og arbeidshverdagen">
-  <meta name="twitter:description" content="Vi hjelper virksomheter å ta AI i bruk i praksis – trygt, konkret og lavterskel.">
-  <meta name="twitter:image" content="https://realiser.ai/og-cover.jpg">
-
-  <!-- Favicons (legg til filene i rotmappen når klare) -->
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-  <!-- Strukturert data: Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "realiser.ai",
-    "url": "https://realiser.ai",
-    "logo": "https://realiser.ai/logo.png",
-    "sameAs": ["https://www.linkedin.com/company/realiserai"],
-    "description": "realiser.ai hjelper virksomheter med å ta AI i bruk i praksis gjennom kompetansebygging, metodikk og reell implementering."
-  }
-  </script>
-
-  <!-- Strukturert data: WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "url": "https://realiser.ai",
-    "name": "realiser.ai",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.google.com/search?q=site%3Arealiser.ai+{search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>realiser.ai — Praktisk, menneskelig og målbar AI</title>
+  <meta name="description" content="Vi hjelper virksomheter å ta i bruk AI i praksis gjennom små, trygge og målbare steg. Fokus på mennesker, prosess og faktisk bruk." />
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --teal:#0E8074; --bg:#F0FDFA; --text:#134E4A; }
-    body{font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin:0; color:var(--text); background:var(--bg);}
-    .container{max-width:1100px; margin:0 auto; padding:48px 20px;}
-    h1{font-size:clamp(2rem, 3.5vw, 3rem); margin:0 0 12px;}
-    p{font-size:1.125rem; line-height:1.5; max-width:60ch;}
-    .hero{display:grid; gap:16px; align-items:start; grid-template-columns:1.2fr;}
-    .btn{display:inline-block; margin-top:20px; padding:14px 18px; background:var(--teal); color:#fff; text-decoration:none; border-radius:14px;}
-    .cta{display:flex; gap:12px; flex-wrap:wrap; align-items:center;}
-    img{max-width:100%; height:auto;}
-    footer{margin-top:64px; font-size:0.95rem; opacity:0.8;}
+    :root { --brand: #0E8074; }
+    .bg-grid {
+      background-image:
+        radial-gradient(rgba(14, 128, 116, 0.08) 1px, transparent 1px),
+        radial-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px);
+      background-size: 24px 24px, 36px 36px;
+      background-position: 0 0, 12px 18px;
+    }
+    .glass { backdrop-filter: saturate(160%) blur(8px); background: rgba(255,255,255,0.6); }
   </style>
 </head>
-<body>
-  <main class="container">
-    <section class="hero" aria-labelledby="h1">
-      <h1 id="h1">Bygg bro mellom AI og arbeidshverdagen</h1>
-      <p>Vi hjelper virksomheter å ta <strong>AI i praksis</strong> – trygt, konkret og lavterskel. Fokus på mennesker, kompetanse og reelle use-cases, ikke bare verktøy.</p>
-      <div class="cta">
-        <a class="btn" href="mailto:kontakt@realiser.ai?subject=Book%20en%20samtale%20med%20realiser.ai">Book en uforpliktende samtale</a>
-        <a href="#kontakt">Kontakt oss</a>
+<body class="min-h-screen bg-white text-slate-900 selection:bg-teal-200 selection:text-teal-900">
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-white/70 glass border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#" class="flex items-center gap-2 font-semibold tracking-tight">
+          <div class="w-8 h-8 rounded-xl" style="background: linear-gradient(135deg, var(--brand), #2563EB)"></div>
+          <span class="text-lg">realiser.ai</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a href="#hvorfor" class="hover:text-teal-700">Hvorfor oss</a>
+          <a href="#tjenester" class="hover:text-teal-700">Tjenester</a>
+          <a href="#malgruppe" class="hover:text-teal-700">Passer vi for deg?</a>
+          <a href="#posisjon" class="hover:text-teal-700">AI i praksis</a>
+          <a href="#kontakt" class="rounded-xl px-4 py-2 bg-[var(--brand)] text-white hover:opacity-90">Book en samtale</a>
+        </nav>
+        <a href="#kontakt" class="md:hidden inline-flex items-center gap-2 rounded-xl px-3 py-2 bg-[var(--brand)] text-white text-sm">Book samtale</a>
       </div>
-      <!-- Valgfritt hero-bilde. Bytt til faktisk fil når klar. -->
-      <picture>
-        <source srcset="/hero.webp" type="image/webp">
-        <img src="/hero.jpg" width="1600" height="900" alt="Team som tar AI i bruk i praksis">
-      </picture>
-    </section>
+    </div>
+  </header>
 
-    <footer id="kontakt">
-      <p>Kontakt: <a href="mailto:kontakt@realiser.ai">kontakt@realiser.ai</a></p>
-    </footer>
-  </main>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-grid">
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-white/70 to-white pointer-events-none"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+      <div class="inline-flex items-center gap-2 text-xs font-semibold text-teal-900 bg-teal-50 border border-teal-200 rounded-full px-3 py-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--brand)]"></span> Små, trygge og målbare steg
+      </div>
+      <h1 class="mt-5 text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight">
+        Vi gjør <span class="bg-gradient-to-r from-[var(--brand)] to-blue-600 bg-clip-text text-transparent">AI praktisk</span>,<br class="hidden sm:block"/> menneskelig og målbar.
+      </h1>
+      <p class="mt-5 text-lg sm:text-xl text-slate-600 max-w-2xl">
+        Vi hjelper kundeservice-, drifts- og støttefunksjoner å ta i bruk AI i praksis.
+        Små, trygge steg fremfor store prosjekter – med fokus på mennesker, læring og dokumentert gevinst.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="#kontakt" class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 bg-[var(--brand)] text-white font-medium hover:opacity-90">
+          Book en samtale
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#tjenester" class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 bg-slate-100 text-slate-800 hover:bg-slate-200">
+          Se våre pakker
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HVORFOR OSS -->
+  <section id="hvorfor" class="py-20 sm:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Hvorfor velge oss</h2>
+      <p class="mt-3 text-slate-600 max-w-3xl">
+        De fleste AI-aktører fokuserer på teknologi. Vi fokuserer på mennesker, prosess og faktisk gevinst.
+        Der andre leverer løsninger, sikrer vi at de blir tatt i bruk.
+      </p>
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="rounded-2xl border border-slate-200 p-5">
+          <div class="text-[var(--brand)] font-semibold text-sm">Rask verdi</div>
+          <p class="mt-2 text-sm text-slate-600">88 % av AI-prosjekter stopper i pilotfasen.</p>
+          <p class="mt-2 text-sm text-slate-600">Vi starter smalt og viser effekt raskt – én oppgave, målbart resultat.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-5">
+          <div class="text-[var(--brand)] font-semibold text-sm">Menneskefokus</div>
+          <p class="mt-2 text-sm text-slate-600">Bedrifter lykkes oftere når arbeidsflyt og adopsjon måles.</p>
+          <p class="mt-2 text-sm text-slate-600">Vi bygger rundt team og arbeidsflyt, ikke bare teknologi.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-5">
+          <div class="text-[var(--brand)] font-semibold text-sm">Trygg innføring</div>
+          <p class="mt-2 text-sm text-slate-600">Personvern og enkel praksis fra dag én.</p>
+          <p class="mt-2 text-sm text-slate-600">Vi legger vekt på rutiner og trygg bruk av AI.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-5">
+          <div class="text-[var(--brand)] font-semibold text-sm">Eierskap</div>
+          <p class="mt-2 text-sm text-slate-600">Få varig effekt uten konsulent-avhengighet.</p>
+          <p class="mt-2 text-sm text-slate-600">Vi trener folkene deres til å eie løsningen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TJENESTER -->
+  <section id="tjenester" class="py-20 sm:py-24 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Tjenester</h2>
+      <p class="mt-4 text-slate-600 max-w-2xl">
+        Velg én, to eller alle tre – hver bygger videre på forrige steg. Alle leverer konkrete resultater du kan bruke videre.
+      </p>
+
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <!-- 1. AI Gevinstkartlegging -->
+        <div class="rounded-2xl bg-white border border-slate-200 p-6 flex flex-col">
+          <div class="text-xs font-semibold text-teal-900 bg-teal-50 inline-flex px-2 py-1 rounded">1–2 uker</div>
+          <h3 class="mt-3 font-semibold text-xl">AI Gevinstkartlegging</h3>
+          <p class="mt-2 text-sm text-slate-600">Vi finner hvor AI kan gi mest verdi i hverdagen.</p>
+          <ul class="mt-4 text-sm text-slate-600 space-y-1 list-disc pl-5 flex-grow">
+            <li>Gjennomgang av arbeidsprosesser</li>
+            <li>Kartlegging av tidstyver og muligheter</li>
+            <li>Prioritert plan for videre steg</li>
+          </ul>
+          <div class="mt-4 border-t pt-4">
+            <p class="text-sm font-medium text-slate-700">Leveranse:</p>
+            <p class="text-sm text-slate-600">AI-gevinstrapport med anbefalte tiltak og prioriteringer.</p>
+          </div>
+        </div>
+
+        <!-- 2. AI Mini-Pilot -->
+        <div class="rounded-2xl bg-white border border-slate-200 p-6 flex flex-col">
+          <div class="text-xs font-semibold text-blue-900 bg-blue-50 inline-flex px-2 py-1 rounded">6–8 uker</div>
+          <h3 class="mt-3 font-semibold text-xl">AI Mini-Pilot</h3>
+          <p class="mt-2 text-sm text-slate-600">En trygg, konkret test i liten skala.</p>
+          <ul class="mt-4 text-sm text-slate-600 space-y-1 list-disc pl-5 flex-grow">
+            <li>Avgrenset pilot på én oppgave</li>
+            <li>Måling av tid, kvalitet og flyt</li>
+            <li>Før/etter-rapport og anbefalinger</li>
+          </ul>
+          <div class="mt-4 border-t pt-4">
+            <p class="text-sm font-medium text-slate-700">Leveranse:</p>
+            <p class="text-sm text-slate-600">Evalueringsrapport med dokumentert effekt og læringspunkter.</p>
+          </div>
+        </div>
+
+        <!-- 3. Adopsjon & Skalering -->
+        <div class="rounded-2xl bg-white border border-slate-200 p-6 flex flex-col">
+          <div class="text-xs font-semibold text-emerald-900 bg-emerald-50 inline-flex px-2 py-1 rounded">4–12 uker</div>
+          <h3 class="mt-3 font-semibold text-xl">Adopsjon & Skalering</h3>
+          <p class="mt-2 text-sm text-slate-600">Fra pilot til faktisk bruk i flere team.</p>
+          <ul class="mt-4 text-sm text-slate-600 space-y-1 list-disc pl-5 flex-grow">
+            <li>Opplæring og veiledning i bruk</li>
+            <li>Rutiner, personvern og trygg praksis</li>
+            <li>Oppfølging og måling av effekt</li>
+          </ul>
+          <div class="mt-4 border-t pt-4">
+            <p class="text-sm font-medium text-slate-700">Leveranse:</p>
+            <p class="text-sm text-slate-600">Implementeringsplan og oppfølging for bærekraftig AI-bruk i organisasjonen.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA under tjenester -->
+      <div class="mt-10 flex items-center justify-center">
+        <a href="#kontakt" class="inline-flex items-center gap-2 rounded-2xl px-6 py-3 bg-[var(--brand)] text-white font-medium hover:opacity-90">
+          Book en samtale
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÅLGRUPPE (flyttet opp, kundeorientert tittel) -->
+  <section id="malgruppe" class="py-20 sm:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Passer vi for deg?</h2>
+      <p class="mt-3 text-slate-600 max-w-3xl">Vi er særlig nyttige for små og mellomstore virksomheter som vil:</p>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="rounded-xl border border-slate-200 p-4 text-sm text-slate-700">effektivisere oppgaver som tar unødvendig tid.</div>
+        <div class="rounded-xl border border-slate-200 p-4 text-sm text-slate-700">gjøre arbeidshverdagen enklere for ansatte.</div>
+        <div class="rounded-xl border border-slate-200 p-4 text-sm text-slate-700">komme i gang uten å bruke masse ressurser.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BROEN / VÅR POSISJON (flyttet nederst, flettet inn arbeidsmåte kort) -->
+  <section id="posisjon" class="py-20 sm:py-24 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Bygg bro mellom AI og arbeidshverdagen</h2>
+      <div class="mt-3 text-slate-700 max-w-4xl space-y-4">
+        <p>Mange virksomheter sliter med å få AI til å fungere i praksis. Teknologien implementeres, men gevinsten uteblir fordi folk ikke får tid, eierskap eller støtte til å bruke den i hverdagen.</p>
+        <p>Der mange aktører fokuserer på plattform og systemer, hjelper vi mennesker og organisasjoner med å faktisk ta AI i bruk. Vi gjør det trygt, konkret og lavterskel – slik at løsningen blir en naturlig del av arbeidshverdagen, ikke et sideprosjekt.</p>
+        <p>Vi leder prosessen steg for steg, trener folk der de er, og måler effekten underveis. Slik bygger vi broen mellom teknologi og mennesker – og sørger for at AI skaper reell verdi i virksomheten.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="py-20 sm:py-24 bg-white">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Klar for første steg?</h2>
+      <p class="mt-3 text-slate-600">Vi svarer raskt – lav terskel og ingen forpliktelser.</p>
+      <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="mailto:kontakt@realiser.ai" class="inline-flex items-center gap-2 rounded-2xl px-6 py-3 bg-[var(--brand)] text-white font-medium hover:opacity-90">
+          Book en samtale
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="flex items-center gap-4 text-sm text-slate-600">
+          <a class="underline underline-offset-4 hover:text-slate-800" href="mailto:kontakt@realiser.ai">kontakt@realiser.ai</a>
+          <span class="hidden sm:inline">•</span>
+          <a class="underline underline-offset-4 hover:text-slate-800" href="mailto:tim.vintervoll@realiser.ai">tim.vintervoll@realiser.ai</a>
+          <span class="hidden sm:inline">•</span>
+          <a class="underline underline-offset-4 hover:text-slate-800" href="mailto:bjorn.martin.flindrum@realiser.ai">bjorn.martin.flindrum@realiser.ai</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-lg" style="background: linear-gradient(135deg, var(--brand), #2563EB)"></div>
+        <span class="text-sm text-slate-600">© realiser.ai</span>
+      </div>
+      <div class="text-sm text-slate-600">
+        realiser AI — effekt i arbeidshverdagen.
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
