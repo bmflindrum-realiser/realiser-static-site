@@ -33,7 +33,7 @@
           <a href="#prosess" class="hover:text-teal-700">Slik jobber vi</a>
           <a href="#posisjon" class="hover:text-teal-700">Vår posisjon</a>
           <a href="#malgruppe" class="hover:text-teal-700">Målgruppe</a>
-          <a href="#kontakt" class="rounded-xl px-4 py-2 bg-[var(--brand)] text-white hover:opacity-90">Book en uforpliktende samtale</a>
+          <a href="#kontakt" class="rounded-xl px-4 py-2 bg-[var(--brand)] text-white hover:opacity-90">Book en samtale</a>
         </nav>
         <a href="#kontakt" class="md:hidden inline-flex items-center gap-2 rounded-xl px-3 py-2 bg-[var(--brand)] text-white text-sm">Book samtale</a>
       </div>
@@ -56,7 +56,7 @@
       </p>
       <div class="mt-8 flex flex-col sm:flex-row gap-3">
         <a href="#kontakt" class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 bg-[var(--brand)] text-white font-medium hover:opacity-90">
-          Book en uforpliktende samtale
+          Book en samtale
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="#tjenester" class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 bg-slate-100 text-slate-800 hover:bg-slate-200">
@@ -161,35 +161,121 @@
   </div>
 </section>
 
-  <!-- PROSESS -->
-  <section id="prosess" class="py-20 sm:py-24 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Slik jobber vi</h2>
-      <div class="mt-10 grid md:grid-cols-4 gap-6">
-        <div class="rounded-2xl border border-slate-200 p-6">
-          <div class="w-8 h-8 rounded-full bg-[var(--brand)] text-white flex items-center justify-center font-semibold">1</div>
-          <h3 class="mt-4 font-semibold">Behov</h3>
-          <p class="mt-2 text-sm text-slate-600">Felles forståelse for mål, prosesser og folkene som skal bruke løsningen.</p>
-        </div>
-        <div class="rounded-2xl border border-slate-200 p-6">
-          <div class="w-8 h-8 rounded-full bg-[var(--brand)] text-white flex items-center justify-center font-semibold">2</div>
-          <h3 class="mt-4 font-semibold">Prototyp</h3>
-          <p class="mt-2 text-sm text-slate-600">Vi tester i liten skala, måler hva som virker og justerer underveis.</p>
-        </div>
-        <div class="rounded-2xl border border-slate-200 p-6">
-          <div class="w-8 h-8 rounded-full bg-[var(--brand)] text-white flex items-center justify-center font-semibold">3</div>
-          <h3 class="mt-4 font-semibold">Forankring</h3>
-          <p class="mt-2 text-sm text-slate-600">Opplæring, roller og ansvar på plass – løsningen eies av teamet.</p>
-        </div>
-        <div class="rounded-2xl border border-slate-200 p-6">
-          <div class="w-8 h-8 rounded-full bg-[var(--brand)] text-white flex items-center justify-center font-semibold">4</div>
-          <h3 class="mt-4 font-semibold">Utrulling</h3>
-          <p class="mt-2 text-sm text-slate-600">Skalering til flere prosesser – kontrollert og målbart.</p>
+ <!-- PROSESS / SLik jobber vi – konkret metodikk -->
+<section id="prosess" class="py-20 sm:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Slik jobber vi</h2>
+    <p class="mt-3 text-slate-600 max-w-3xl">
+      En praktisk metode for å få AI til å virke i hverdagen – forskjellig fra pakkene, samme kvalitet.
+    </p>
+
+    <!-- Vertical timeline on desktop, stacked on mobile -->
+    <div class="mt-10 relative">
+      <div class="hidden md:block absolute left-6 top-0 bottom-0 w-px bg-slate-200"></div>
+
+      <!-- 1 -->
+      <div class="relative md:pl-16">
+        <div class="flex items-start gap-4">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-[var(--brand)] text-white flex items-center justify-center font-semibold">1</div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 w-full">
+            <h3 class="font-semibold text-lg">Observer og forstå</h3>
+            <p class="mt-2 text-sm text-slate-700">Vi ser på hvordan oppgaver faktisk løses i dag. Kartlegger data, verktøy og beslutninger.</p>
+            <div class="mt-3 pt-3 border-t border-slate-200">
+              <div class="text-xs font-medium text-slate-700">Artefakt:</div>
+              <p class="text-sm text-slate-600">Dagens arbeidsflyt + liste over tidstyver og muligheter.</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
 
+      <!-- 2 -->
+      <div class="relative mt-6 md:pl-16">
+        <div class="flex items-start gap-4">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold">2</div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 w-full">
+            <h3 class="font-semibold text-lg">Avgrens og definer gevinst</h3>
+            <p class="mt-2 text-sm text-slate-700">Vi velger ett lavrisiko-område med klar verdi. Definerer mål, måltall og suksesskriterier.</p>
+            <div class="mt-3 grid sm:grid-cols-2 gap-3">
+              <div class="rounded-xl border border-slate-200 p-3 bg-slate-50">
+                <div class="text-[10px] uppercase tracking-wide text-slate-500">Hypotese</div>
+                <div class="text-sm font-medium">Hva blir bedre og hvordan måles det?</div>
+              </div>
+              <div class="rounded-xl border border-slate-200 p-3 bg-slate-50">
+                <div class="text-[10px] uppercase tracking-wide text-slate-500">Måleplan</div>
+                <div class="text-sm font-medium">Før/etter-metode og datakilder</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="relative mt-6 md:pl-16">
+        <div class="flex items-start gap-4">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-amber-600 text-white flex items-center justify-center font-semibold">3</div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 w-full">
+            <h3 class="font-semibold text-lg">Test og lær</h3>
+            <p class="mt-2 text-sm text-slate-700">Vi bygger en enkel løsning, tester i korte sykluser og justerer med teamet.</p>
+            <ul class="mt-3 text-sm text-slate-700 list-disc pl-5 space-y-1">
+              <li>Prototype for én konkret oppgave</li>
+              <li>2–3 testrunder med brukere</li>
+              <li>Måling av tid, kvalitet og flyt</li>
+            </ul>
+            <div class="mt-3 pt-3 border-t border-slate-200">
+              <div class="text-xs font-medium text-slate-700">Artefakt:</div>
+              <p class="text-sm text-slate-600">Før/etter-resultater + anbefaling for videreføring.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="relative mt-6 md:pl-16">
+        <div class="flex items-start gap-4">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center font-semibold">4</div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 w-full">
+            <h3 class="font-semibold text-lg">Forankre og overfør</h3>
+            <p class="mt-2 text-sm text-slate-700">Vi gjør løsningen enkel å bruke og eie i linjen. Opplæring og roller på plass.</p>
+            <div class="mt-3 grid sm:grid-cols-2 gap-3">
+              <div class="rounded-xl border border-slate-200 p-3 bg-slate-50">
+                <div class="text-[10px] uppercase tracking-wide text-slate-500">Drift</div>
+                <div class="text-sm font-medium">Rutiner for kvalitet, sikkerhet og forbedring</div>
+              </div>
+              <div class="rounded-xl border border-slate-200 p-3 bg-slate-50">
+                <div class="text-[10px] uppercase tracking-wide text-slate-500">Opplæring</div>
+                <div class="text-sm font-medium">Korte kurs + “how-to” for teamet</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="relative mt-6 md:pl-16">
+        <div class="flex items-start gap-4">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-slate-700 text-white flex items-center justify-center font-semibold">5</div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 w-full">
+            <h3 class="font-semibold text-lg">Skalér og mål effekt</h3>
+            <p class="mt-2 text-sm text-slate-700">Vi tar metoden videre til flere prosesser og team. Effekt følges opp over tid.</p>
+            <div class="mt-3 pt-3 border-t border-slate-200">
+              <div class="text-xs font-medium text-slate-700">Artefakt:</div>
+              <p class="text-sm text-slate-600">Utrullingsplan + KPI-oversikt per prosess.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Soft CTA -->
+    <div class="mt-10">
+      <a href="#kontakt" class="inline-flex items-center gap-2 rounded-2xl px-5 py-2.5 bg-[var(--brand)] text-white text-sm font-medium hover:opacity-90">
+        Diskuter metode for din kontekst
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
   <!-- POSISJON & VERDIFORSLAG (tre kort) -->
   <section id="posisjon" class="py-20 sm:py-24 bg-slate-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -249,13 +335,14 @@
       <p class="mt-3 text-slate-600">Vi svarer raskt – lav terskel og ingen forpliktelser.</p>
       <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
         <a href="mailto:kontakt@realiser.ai" class="inline-flex items-center gap-2 rounded-2xl px-6 py-3 bg-[var(--brand)] text-white font-medium hover:opacity-90">
-          Book en uforpliktende samtale
+          Book en samtale
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <div class="flex items-center gap-4 text-sm text-slate-600">
           <a class="underline underline-offset-4 hover:text-slate-800" href="mailto:kontakt@realiser.ai">kontakt@realiser.ai</a>
           <span class="hidden sm:inline">•</span>
           <a class="underline underline-offset-4 hover:text-slate-800" href="mailto:bm@realiser.ai">bm@realiser.ai</a>
+          <span class="hidden sm:inline">•</span>
           <a class="underline underline-offset-4 hover:text-slate-800" href="mailto:tim@realiser.ai">tim@realiser.ai</a>
         </div>
       </div>
