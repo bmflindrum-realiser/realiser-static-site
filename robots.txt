@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-
-# Oppgi hvor søkemotorer finner nettstedets sitemap
 Sitemap: https://realiser.ai/sitemap.xml
