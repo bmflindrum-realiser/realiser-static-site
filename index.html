@@ -156,195 +156,198 @@
         </div>
       </div>
       
-<!-- ROI-KALKULATOR -->
-<section id="roi" class="py-20 sm:py-24 bg-white">
+<!-- ROI-KALKULATOR (forenklet) -->
+<section id="roi" class="py-16 bg-white">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">ROI-kalkulator</h2>
-    <p class="mt-3 text-slate-600 max-w-3xl">
-      Estimer årlig gevinst av å ta i bruk AI i arbeidshverdagen.
-    </p>
+    <p class="mt-2 text-slate-600">Fyll inn det viktigste. Resultatet oppdateres fortløpende.</p>
 
-    <!-- INPUTS -->
-    <form id="roiForm" class="mt-8 grid lg:grid-cols-3 gap-6">
-      <!-- Kolonne 1: Effekt -->
-      <div class="rounded-xl border border-slate-200 p-5 bg-white">
-        <div class="text-sm font-medium text-slate-900">Effekt per ansatt</div>
-        <label class="block mt-4 text-sm text-slate-700">
-          Antall ansatte i målgruppen
-          <input type="number" inputmode="numeric" min="0" step="1" id="employees" value="25"
-                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
-        </label>
-        <label class="block mt-4 text-sm text-slate-700">
-          Timekostnad, kr
-          <input type="number" inputmode="decimal" min="0" step="50" id="hourlyCost" value="800"
-                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
-        </label>
-        <label class="block mt-4 text-sm text-slate-700">
-          Timer spart per uke per ansatt
-          <input type="number" inputmode="decimal" min="0" step="0.5" id="hoursSavedWeek" value="1.5"
-                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
-        </label>
-        <label class="block mt-4 text-sm text-slate-700">
-          Uker i aktiv bruk per år
-          <input type="number" inputmode="numeric" min="0" max="52" step="1" id="weeksPerYear" value="44"
-                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
-        </label>
-      </div>
+    <div class="mt-8 grid lg:grid-cols-2 gap-8">
+      <!-- Inputs -->
+      <form id="roiForm" class="space-y-5">
+        <div class="grid grid-cols-2 gap-4">
+          <label class="text-sm text-slate-700">
+            Antall ansatte
+            <input type="number" id="employees" value="20" min="0" step="1"
+              class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600">
+          </label>
 
-      <!-- Kolonne 2: Kostnader -->
-      <div class="rounded-xl border border-slate-200 p-5 bg-white">
-        <div class="text-sm font-medium text-slate-900">Kostnader</div>
-        <label class="block mt-4 text-sm text-slate-700">
-          Engangskostnad (implementering), kr
-          <input type="number" inputmode="decimal" min="0" step="1000" id="oneOffCost" value="60000"
-                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
-        </label>
-        <label class="block mt-4 text-sm text-slate-700">
-          Lisenskost per bruker per mnd, kr
-          <input type="number" inputmode="decimal" min="0" step="10" id="licensePerUserMonth" value="200"
-                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
-        </label>
-        <label class="block mt-4 text-sm text-slate-700">
-          Andre årlige kostnader, kr
-          <input type="number" inputmode="decimal" min="0" step="500" id="otherAnnualCosts" value="0"
-                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
-        </label>
-      </div>
-
-      <!-- Kolonne 3: Resultater -->
-      <div class="rounded-xl border border-slate-200 p-5 bg-white">
-        <div class="text-sm font-medium text-slate-900">Resultater</div>
-
-        <dl class="mt-4 space-y-3 text-sm">
-          <div class="flex justify-between">
-            <dt class="text-slate-600">Årlig tidsbesparelse</dt>
-            <dd id="savedHours" class="font-medium text-slate-900">–</dd>
-          </div>
-          <div class="flex justify-between">
-            <dt class="text-slate-600">Verdi av tidsbesparelse</dt>
-            <dd id="savedValue" class="font-medium text-slate-900">–</dd>
-          </div>
-          <div class="flex justify-between">
-            <dt class="text-slate-600">Årlige lisenskostnader</dt>
-            <dd id="licenseAnnual" class="font-medium text-slate-900">–</dd>
-          </div>
-          <div class="flex justify-between">
-            <dt class="text-slate-600">Totale kostnader første år</dt>
-            <dd id="totalCostsYear1" class="font-medium text-slate-900">–</dd>
-          </div>
-          <div class="flex justify-between">
-            <dt class="text-slate-600">Netto gevinst første år</dt>
-            <dd id="netBenefitYear1" class="font-semibold text-teal-700">–</dd>
-          </div>
-          <div class="flex justify-between">
-            <dt class="text-slate-600">ROI første år</dt>
-            <dd id="roiYear1" class="font-semibold text-teal-700">–</dd>
-          </div>
-          <div class="flex justify-between">
-            <dt class="text-slate-600">Tilbakebetalingstid</dt>
-            <dd id="paybackMonths" class="font-medium text-slate-900">–</dd>
-          </div>
-        </dl>
-
-        <div class="mt-6 flex gap-3">
-          <button type="button" id="calcBtn"
-                  class="inline-flex items-center rounded-xl px-4 py-2 text-sm font-medium text-white bg-teal-700 hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600">
-            Beregn
-          </button>
-          <button type="reset" id="resetBtn"
-                  class="inline-flex items-center rounded-xl px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-200 hover:bg-slate-50">
-            Nullstill
-          </button>
+          <label class="text-sm text-slate-700">
+            Timekostnad (kr)
+            <input type="number" id="hourlyCost" value="800" min="0" step="50"
+              class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600">
+          </label>
         </div>
 
-        <details class="mt-6 text-xs text-slate-500">
-          <summary class="cursor-pointer">Forutsetninger og formel</summary>
-          <p class="mt-2">Årlig spart tid = ansatte × timer spart/uke × uker/år.</p>
-          <p>Verdi av tid = årlig spart tid × timekostnad.</p>
-          <p>Lisensår = ansatte × lisens/mnd × 12.</p>
-          <p>Totale kostnader første år = engangskostnad + lisensår + andre årlige kostnader.</p>
-          <p>Netto gevinst første år = verdi av tid − totale kostnader første år.</p>
-          <p>ROI første år = netto gevinst / totale kostnader.</p>
-          <p>Tilbakebetalingstid = (engangskostnad + andre årlige kostnader) / månedlig gevinst.</p>
-        </details>
+        <div class="text-sm text-slate-700">
+          <div class="flex items-center justify-between">
+            <span>Timer spart/uke/ansatt</span>
+            <div class="flex gap-2">
+              <button type="button" data-preset="1" class="px-2 py-1 rounded-lg border text-xs text-slate-700 hover:bg-slate-50">1</button>
+              <button type="button" data-preset="1.5" class="px-2 py-1 rounded-lg border text-xs text-slate-700 hover:bg-slate-50">1,5</button>
+              <button type="button" data-preset="2" class="px-2 py-1 rounded-lg border text-xs text-slate-700 hover:bg-slate-50">2</button>
+            </div>
+          </div>
+          <input type="range" id="hoursSavedWeek" min="0" max="5" step="0.5" value="1.5"
+            class="mt-2 w-full accent-teal-700">
+          <div class="mt-1 text-xs text-slate-500">Nåværende: <span id="hoursSavedWeekLabel">1,5</span> t</div>
+        </div>
+
+        <div class="text-sm text-slate-700">
+          Uker i aktiv bruk per år
+          <input type="range" id="weeksPerYear" min="20" max="52" step="1" value="44"
+            class="mt-2 w-full accent-teal-700">
+          <div class="mt-1 text-xs text-slate-500">Nåværende: <span id="weeksPerYearLabel">44</span> uker</div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <label class="text-sm text-slate-700">
+            Engangskostnad (kr)
+            <input type="number" id="oneOffCost" value="60000" min="0" step="1000"
+              class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600">
+          </label>
+
+          <label class="text-sm text-slate-700">
+            Lisens/bruker/mnd (kr)
+            <input type="number" id="licensePerUserMonth" value="200" min="0" step="10"
+              class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600">
+          </label>
+        </div>
+
+        <label class="text-sm text-slate-700 block">
+          Andre årlige kostnader (kr) <span class="text-xs text-slate-500">(valgfritt)</span>
+          <input type="number" id="otherAnnualCosts" value="0" min="0" step="500"
+            class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600">
+        </label>
+
+        <button type="reset"
+          class="rounded-xl px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-200 hover:bg-slate-50">
+          Nullstill
+        </button>
+      </form>
+
+      <!-- Results -->
+      <div class="space-y-4">
+        <div class="rounded-2xl border border-slate-200 p-6 bg-white">
+          <div class="text-sm text-slate-500">Estimert netto gevinst første år</div>
+          <div id="netBenefitYear1" class="mt-1 text-3xl font-semibold text-teal-700">–</div>
+          <div class="mt-4 grid grid-cols-2 gap-4 text-sm">
+            <div class="rounded-xl bg-slate-50 p-4">
+              <div class="text-slate-500">Verdi av spart tid/år</div>
+              <div id="savedValue" class="mt-1 font-medium text-slate-900">–</div>
+            </div>
+            <div class="rounded-xl bg-slate-50 p-4">
+              <div class="text-slate-500">Totale kostnader år 1</div>
+              <div id="totalCostsYear1" class="mt-1 font-medium text-slate-900">–</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 p-6 bg-white">
+          <dl class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <dt class="text-slate-500">Årlig tidsbesparelse</dt>
+              <dd id="savedHours" class="mt-1 font-medium text-slate-900">–</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500">Årlige lisenskostnader</dt>
+              <dd id="licenseAnnual" class="mt-1 font-medium text-slate-900">–</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500">ROI år 1</dt>
+              <dd id="roiYear1" class="mt-1 font-semibold text-teal-700">–</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500">Tilbakebetalingstid</dt>
+              <dd id="paybackMonths" class="mt-1 font-medium text-slate-900">–</dd>
+            </div>
+          </dl>
+        </div>
       </div>
-    </form>
+    </div>
   </div>
 </section>
 
 <script>
-  (function () {
-    const nf = new Intl.NumberFormat('nb-NO', { style: 'currency', currency: 'NOK', maximumFractionDigits: 0 });
-    const nfDec = new Intl.NumberFormat('nb-NO', { maximumFractionDigits: 1 });
+(function () {
+  const nf = new Intl.NumberFormat('nb-NO', { style: 'currency', currency: 'NOK', maximumFractionDigits: 0 });
+  const nfDec = new Intl.NumberFormat('nb-NO', { maximumFractionDigits: 1 });
 
-    // Inputs
-    const employees = document.getElementById('employees');
-    const hourlyCost = document.getElementById('hourlyCost');
-    const hoursSavedWeek = document.getElementById('hoursSavedWeek');
-    const weeksPerYear = document.getElementById('weeksPerYear');
-    const oneOffCost = document.getElementById('oneOffCost');
-    const licensePerUserMonth = document.getElementById('licensePerUserMonth');
-    const otherAnnualCosts = document.getElementById('otherAnnualCosts');
+  // Inputs
+  const employees = document.getElementById('employees');
+  const hourlyCost = document.getElementById('hourlyCost');
+  const hoursSavedWeek = document.getElementById('hoursSavedWeek');
+  const weeksPerYear = document.getElementById('weeksPerYear');
+  const oneOffCost = document.getElementById('oneOffCost');
+  const licensePerUserMonth = document.getElementById('licensePerUserMonth');
+  const otherAnnualCosts = document.getElementById('otherAnnualCosts');
 
-    // Outputs
-    const savedHours = document.getElementById('savedHours');
-    const savedValue = document.getElementById('savedValue');
-    const licenseAnnual = document.getElementById('licenseAnnual');
-    const totalCostsYear1 = document.getElementById('totalCostsYear1');
-    const netBenefitYear1 = document.getElementById('netBenefitYear1');
-    const roiYear1 = document.getElementById('roiYear1');
-    const paybackMonths = document.getElementById('paybackMonths');
+  // Labels
+  const hoursSavedWeekLabel = document.getElementById('hoursSavedWeekLabel');
+  const weeksPerYearLabel = document.getElementById('weeksPerYearLabel');
 
-    function v(n) { return Math.max(0, Number(n) || 0); }
+  // Outputs
+  const savedHours = document.getElementById('savedHours');
+  const savedValue = document.getElementById('savedValue');
+  const licenseAnnual = document.getElementById('licenseAnnual');
+  const totalCostsYear1 = document.getElementById('totalCostsYear1');
+  const netBenefitYear1 = document.getElementById('netBenefitYear1');
+  const roiYear1 = document.getElementById('roiYear1');
+  const paybackMonths = document.getElementById('paybackMonths');
 
-    function calc() {
-      const emp = v(employees.value);
-      const hc = v(hourlyCost.value);
-      const hsw = v(hoursSavedWeek.value);
-      const wpy = Math.min(52, v(weeksPerYear.value));
-      const oneOff = v(oneOffCost.value);
-      const licM = v(licensePerUserMonth.value);
-      const other = v(otherAnnualCosts.value);
+  function num(n) { return Math.max(0, Number(n) || 0); }
 
-      // Beregninger
-      const hoursYear = emp * hsw * wpy;
-      const valueYear = hoursYear * hc;
+  function calc() {
+    const emp = num(employees.value);
+    const hc = num(hourlyCost.value);
+    const hsw = num(hoursSavedWeek.value);
+    const wpy = Math.min(52, num(weeksPerYear.value));
+    const oneOff = num(oneOffCost.value);
+    const licM = num(licensePerUserMonth.value);
+    const other = num(otherAnnualCosts.value);
 
-      const licenseYear = emp * licM * 12;
-      const totalCosts = oneOff + licenseYear + other;
-      const netYear1 = valueYear - totalCosts;
+    hoursSavedWeekLabel.textContent = String(hsw).replace('.', ',');
+    weeksPerYearLabel.textContent = wpy;
 
-      const roi = totalCosts > 0 ? netYear1 / totalCosts : 0;
+    const hoursYear = emp * hsw * wpy;
+    const valueYear = hoursYear * hc;
 
-      const monthlyGain = (valueYear - licenseYear - other) / 12; // ekskl engangskostnad
-      const payback = monthlyGain > 0 ? (oneOff + other) / monthlyGain : Infinity;
+    const licenseYear = emp * licM * 12;
+    const totalCosts = oneOff + licenseYear + other;
+    const netYear1 = valueYear - totalCosts;
 
-      // Presenter
-      savedHours.textContent = nfDec.format(hoursYear) + ' t';
-      savedValue.textContent = nf.format(valueYear);
-      licenseAnnual.textContent = nf.format(licenseYear);
-      totalCostsYear1.textContent = nf.format(totalCosts);
-      netBenefitYear1.textContent = nf.format(netYear1);
-      roiYear1.textContent = isFinite(roi) ? (roi * 100).toFixed(0) + ' %' : '–';
-      paybackMonths.textContent = isFinite(payback) ? nfDec.format(payback) + ' mnd' : 'ikke beregnbar';
-    }
+    const roi = totalCosts > 0 ? netYear1 / totalCosts : 0;
 
-    // Handlers
-    document.getElementById('calcBtn').addEventListener('click', calc);
-    document.getElementById('resetBtn').addEventListener('click', function () {
-      // Delay to allow browser to reset values first
-      setTimeout(calc, 0);
+    // Månedlig gevinst ekskl. engangskost
+    const monthlyGain = (valueYear - licenseYear - other) / 12;
+    const payback = monthlyGain > 0 ? (oneOff + other) / monthlyGain : Infinity;
+
+    savedHours.textContent = nfDec.format(hoursYear) + ' t';
+    savedValue.textContent = nf.format(valueYear);
+    licenseAnnual.textContent = nf.format(licenseYear);
+    totalCostsYear1.textContent = nf.format(totalCosts);
+    netBenefitYear1.textContent = nf.format(netYear1);
+    roiYear1.textContent = isFinite(roi) ? (roi * 100).toFixed(0) + ' %' : '–';
+    paybackMonths.textContent = isFinite(payback) ? nfDec.format(payback) + ' mnd' : '–';
+  }
+
+  // Preset-knapper for timer spart
+  document.querySelectorAll('[data-preset]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      hoursSavedWeek.value = btn.getAttribute('data-preset');
+      calc();
     });
+  });
 
-    // Live-oppdatering på input
-    document.querySelectorAll('#roiForm input').forEach(el => {
-      el.addEventListener('input', calc);
-    });
+  // Lytt på endringer
+  document.querySelectorAll('#roiForm input').forEach(el => el.addEventListener('input', calc));
+  document.getElementById('roiForm').addEventListener('reset', () => setTimeout(calc, 0));
 
-    // Init
-    calc();
-  })();
+  // Init
+  calc();
+})();
 </script>
+
       
       <!-- CTA under tjenester -->
       <div class="mt-10 flex items-center justify-center">
