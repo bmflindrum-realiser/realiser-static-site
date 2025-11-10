@@ -156,118 +156,195 @@
         </div>
       </div>
       
-    <!-- ROI KALKULATOR START -->
-    <div id="roi-kalkulator" class="mt-16 pt-12 border-t border-slate-200">
-        <header class="mb-8 text-center max-w-3xl mx-auto">
-            <div class="text-xs font-semibold text-teal-900 bg-teal-50 inline-flex px-2 py-1 rounded mb-2">Målbar Gevinst</div>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-2">Hvor mye kan dere spare?</h2>
-            <p class="text-lg text-slate-600">
-                Bruk vår kalkulator for å estimere den potensielle årlige besparelsen dere kan avdekke gjennom en **AI Gevinstkartlegging** (1–2 uker).
-            </p>
-        </header>
+<!-- ROI-KALKULATOR -->
+<section id="roi" class="py-20 sm:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">ROI-kalkulator</h2>
+    <p class="mt-3 text-slate-600 max-w-3xl">
+      Estimer årlig gevinst av å ta i bruk AI i arbeidshverdagen.
+    </p>
 
-        <div class="w-full max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-6 sm:p-8 border border-slate-200">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- INPUTS -->
+    <form id="roiForm" class="mt-8 grid lg:grid-cols-3 gap-6">
+      <!-- Kolonne 1: Effekt -->
+      <div class="rounded-xl border border-slate-200 p-5 bg-white">
+        <div class="text-sm font-medium text-slate-900">Effekt per ansatt</div>
+        <label class="block mt-4 text-sm text-slate-700">
+          Antall ansatte i målgruppen
+          <input type="number" inputmode="numeric" min="0" step="1" id="employees" value="25"
+                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
+        </label>
+        <label class="block mt-4 text-sm text-slate-700">
+          Timekostnad, kr
+          <input type="number" inputmode="decimal" min="0" step="50" id="hourlyCost" value="800"
+                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
+        </label>
+        <label class="block mt-4 text-sm text-slate-700">
+          Timer spart per uke per ansatt
+          <input type="number" inputmode="decimal" min="0" step="0.5" id="hoursSavedWeek" value="1.5"
+                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
+        </label>
+        <label class="block mt-4 text-sm text-slate-700">
+          Uker i aktiv bruk per år
+          <input type="number" inputmode="numeric" min="0" max="52" step="1" id="weeksPerYear" value="44"
+                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
+        </label>
+      </div>
 
-                <!-- Input Kolonne -->
-                <div class="space-y-6">
-                    <h3 class="text-xl font-semibold text-slate-800 border-b border-slate-100 pb-3 mb-4">Estimér deres tidstyver</h3>
+      <!-- Kolonne 2: Kostnader -->
+      <div class="rounded-xl border border-slate-200 p-5 bg-white">
+        <div class="text-sm font-medium text-slate-900">Kostnader</div>
+        <label class="block mt-4 text-sm text-slate-700">
+          Engangskostnad (implementering), kr
+          <input type="number" inputmode="decimal" min="0" step="1000" id="oneOffCost" value="60000"
+                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
+        </label>
+        <label class="block mt-4 text-sm text-slate-700">
+          Lisenskost per bruker per mnd, kr
+          <input type="number" inputmode="decimal" min="0" step="10" id="licensePerUserMonth" value="200"
+                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
+        </label>
+        <label class="block mt-4 text-sm text-slate-700">
+          Andre årlige kostnader, kr
+          <input type="number" inputmode="decimal" min="0" step="500" id="otherAnnualCosts" value="0"
+                 class="mt-1 w-full rounded-lg border-slate-300 focus:ring-teal-600 focus:border-teal-600"/>
+        </label>
+      </div>
 
-                    <!-- 1. Antall Timer per Måned -->
-                    <div>
-                        <label for="monthlyHours" class="block text-sm font-medium text-slate-700 mb-1">
-                            Timer brukt på repeterbare oppgaver per måned (totalt i avdelingen)
-                        </label>
-                        <input type="number" id="monthlyHours" min="10" value="120"
-                               class="mt-1 block w-full px-4 py-3 border border-slate-300 rounded-lg shadow-sm focus:ring-[var(--brand)] focus:border-[var(--brand)] transition duration-150">
-                        <p class="mt-1 text-xs text-slate-500">Typiske tidstyver er datahåndtering, interne forespørsler og enkel saksbehandling.</p>
-                    </div>
+      <!-- Kolonne 3: Resultater -->
+      <div class="rounded-xl border border-slate-200 p-5 bg-white">
+        <div class="text-sm font-medium text-slate-900">Resultater</div>
 
-                    <!-- 2. Gjennomsnittlig Timelønn (inkl. arb.giveravgift) -->
-                    <div>
-                        <label for="hourlyRate" class="block text-sm font-medium text-slate-700 mb-1">
-                            Gj.snittlig kostnad per time (inkl. lønn og sos. kostnader)
-                        </label>
-                        <div class="relative mt-1">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <span class="text-slate-500 sm:text-sm">kr</span>
-                            </div>
-                            <input type="number" id="hourlyRate" min="100" value="650"
-                                   class="block w-full pl-9 pr-4 py-3 border border-slate-300 rounded-lg shadow-sm focus:ring-[var(--brand)] focus:border-[var(--brand)] transition duration-150">
-                        </div>
-                        <p class="mt-1 text-xs text-slate-500">Dette er kostnaden dere kan spare ved å frigjøre tid.</p>
-                    </div>
+        <dl class="mt-4 space-y-3 text-sm">
+          <div class="flex justify-between">
+            <dt class="text-slate-600">Årlig tidsbesparelse</dt>
+            <dd id="savedHours" class="font-medium text-slate-900">–</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt class="text-slate-600">Verdi av tidsbesparelse</dt>
+            <dd id="savedValue" class="font-medium text-slate-900">–</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt class="text-slate-600">Årlige lisenskostnader</dt>
+            <dd id="licenseAnnual" class="font-medium text-slate-900">–</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt class="text-slate-600">Totale kostnader første år</dt>
+            <dd id="totalCostsYear1" class="font-medium text-slate-900">–</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt class="text-slate-600">Netto gevinst første år</dt>
+            <dd id="netBenefitYear1" class="font-semibold text-teal-700">–</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt class="text-slate-600">ROI første år</dt>
+            <dd id="roiYear1" class="font-semibold text-teal-700">–</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt class="text-slate-600">Tilbakebetalingstid</dt>
+            <dd id="paybackMonths" class="font-medium text-slate-900">–</dd>
+          </div>
+        </dl>
 
-                    <!-- 3. AI Effektiviseringspotensial (realiser.ai estimat) -->
-                    <div>
-                        <label for="efficiency" class="block text-sm font-medium text-slate-700 mb-1">
-                            Potensielt effektiviseringspotensial for disse oppgavene med AI (%)
-                        </label>
-                        <div class="relative mt-1">
-                            <input type="range" id="efficiency" min="10" max="60" value="35"
-                                   class="w-full h-2 bg-teal-100 rounded-lg appearance-none cursor-pointer accent-[var(--brand)] transition duration-150"
-                                   oninput="updateEfficiencyDisplay(); calculateROI()">
-                            <div class="text-center mt-2">
-                                <span id="efficiencyDisplay" class="text-2xl font-bold text-[var(--brand)]">35%</span>
-                            </div>
-                        </div>
-                        <p class="mt-1 text-xs text-slate-500">Gevinstkartleggingen identifiserer konkrete tiltak for å nå dette potensialet.</p>
-                    </div>
-                    
-                    <!-- 4. Kostnad for AI Gevinstkartlegging (Fastpris) -->
-                    <div>
-                        <label for="pilotCost" class="block text-sm font-medium text-slate-700 mb-1">
-                            Investering: AI Gevinstkartlegging (Fastpris)
-                        </label>
-                        <div class="relative mt-1">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <span class="text-slate-500 sm:text-sm">kr</span>
-                            </div>
-                            <!-- Setter fastpris for Gevinstkartlegging -->
-                            <input type="number" id="pilotCost" min="49000" value="79000" readonly
-                                   class="block w-full pl-9 pr-4 py-3 border border-slate-300 bg-slate-100 rounded-lg shadow-sm font-semibold">
-                        </div>
-                        <p class="mt-1 text-xs text-slate-500">En liten investering som avdekker store besparelser.</p>
-                    </div>
-                </div>
-
-                <!-- Resultat Kolonne -->
-                <div class="bg-white p-6 rounded-xl shadow-inner border border-slate-200 flex flex-col justify-between" style="background-color: var(--brand-light);">
-                    <h3 class="text-xl font-semibold text-teal-800 border-b border-teal-200 pb-3 mb-4">Potensiell Gevinst (etter Gevinstkartlegging)</h3>
-
-                    <div class="space-y-6">
-                        <!-- Månedlig Besparelse -->
-                        <div class="bg-white p-4 rounded-lg shadow">
-                            <p class="text-sm font-medium text-teal-600">Estimert Månedlig Besparelse (i frigjort tid)</p>
-                            <p id="savedHours" class="text-3xl font-bold text-slate-900 mt-1">0 timer</p>
-                            <p id="monthlySavings" class="text-xl font-semibold text-slate-700 mt-1"></p>
-                        </div>
-
-                        <!-- Årlig Besparelse (Gevinst) -->
-                        <div class="bg-white p-4 rounded-lg shadow border-2 border-[var(--brand)]">
-                            <p class="text-sm font-medium text-teal-700">Estimert Årlig Kostnadsgevinst</p>
-                            <p id="annualSavings" class="text-4xl font-extrabold text-green-700 mt-1">kr 0,-</p>
-                        </div>
-
-                        <!-- ROI -->
-                        <div class="bg-white p-4 rounded-lg shadow">
-                            <p class="text-sm font-medium text-teal-600">ROI: Gevinstkartleggingen har tjent seg inn etter...</p>
-                            <p id="roiResult" class="text-3xl font-bold text-slate-900 mt-1">0 måneder</p>
-                        </div>
-                    </div>
-
-                    <!-- Handlingsknapp -->
-                    <div class="mt-8 text-center">
-                        <a href="#kontakt" class="inline-block w-full px-6 py-3 bg-[var(--brand)] text-white font-bold rounded-xl hover:opacity-90 transition duration-300 shadow-lg shadow-teal-200">
-                            Start med AI Gevinstkartlegging
-                        </a>
-                    </div>
-                </div>
-
-            </div>
+        <div class="mt-6 flex gap-3">
+          <button type="button" id="calcBtn"
+                  class="inline-flex items-center rounded-xl px-4 py-2 text-sm font-medium text-white bg-teal-700 hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600">
+            Beregn
+          </button>
+          <button type="reset" id="resetBtn"
+                  class="inline-flex items-center rounded-xl px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-200 hover:bg-slate-50">
+            Nullstill
+          </button>
         </div>
-    </div>
-    <!-- ROI KALKULATOR SLUTT -->
+
+        <details class="mt-6 text-xs text-slate-500">
+          <summary class="cursor-pointer">Forutsetninger og formel</summary>
+          <p class="mt-2">Årlig spart tid = ansatte × timer spart/uke × uker/år.</p>
+          <p>Verdi av tid = årlig spart tid × timekostnad.</p>
+          <p>Lisensår = ansatte × lisens/mnd × 12.</p>
+          <p>Totale kostnader første år = engangskostnad + lisensår + andre årlige kostnader.</p>
+          <p>Netto gevinst første år = verdi av tid − totale kostnader første år.</p>
+          <p>ROI første år = netto gevinst / totale kostnader.</p>
+          <p>Tilbakebetalingstid = (engangskostnad + andre årlige kostnader) / månedlig gevinst.</p>
+        </details>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const nf = new Intl.NumberFormat('nb-NO', { style: 'currency', currency: 'NOK', maximumFractionDigits: 0 });
+    const nfDec = new Intl.NumberFormat('nb-NO', { maximumFractionDigits: 1 });
+
+    // Inputs
+    const employees = document.getElementById('employees');
+    const hourlyCost = document.getElementById('hourlyCost');
+    const hoursSavedWeek = document.getElementById('hoursSavedWeek');
+    const weeksPerYear = document.getElementById('weeksPerYear');
+    const oneOffCost = document.getElementById('oneOffCost');
+    const licensePerUserMonth = document.getElementById('licensePerUserMonth');
+    const otherAnnualCosts = document.getElementById('otherAnnualCosts');
+
+    // Outputs
+    const savedHours = document.getElementById('savedHours');
+    const savedValue = document.getElementById('savedValue');
+    const licenseAnnual = document.getElementById('licenseAnnual');
+    const totalCostsYear1 = document.getElementById('totalCostsYear1');
+    const netBenefitYear1 = document.getElementById('netBenefitYear1');
+    const roiYear1 = document.getElementById('roiYear1');
+    const paybackMonths = document.getElementById('paybackMonths');
+
+    function v(n) { return Math.max(0, Number(n) || 0); }
+
+    function calc() {
+      const emp = v(employees.value);
+      const hc = v(hourlyCost.value);
+      const hsw = v(hoursSavedWeek.value);
+      const wpy = Math.min(52, v(weeksPerYear.value));
+      const oneOff = v(oneOffCost.value);
+      const licM = v(licensePerUserMonth.value);
+      const other = v(otherAnnualCosts.value);
+
+      // Beregninger
+      const hoursYear = emp * hsw * wpy;
+      const valueYear = hoursYear * hc;
+
+      const licenseYear = emp * licM * 12;
+      const totalCosts = oneOff + licenseYear + other;
+      const netYear1 = valueYear - totalCosts;
+
+      const roi = totalCosts > 0 ? netYear1 / totalCosts : 0;
+
+      const monthlyGain = (valueYear - licenseYear - other) / 12; // ekskl engangskostnad
+      const payback = monthlyGain > 0 ? (oneOff + other) / monthlyGain : Infinity;
+
+      // Presenter
+      savedHours.textContent = nfDec.format(hoursYear) + ' t';
+      savedValue.textContent = nf.format(valueYear);
+      licenseAnnual.textContent = nf.format(licenseYear);
+      totalCostsYear1.textContent = nf.format(totalCosts);
+      netBenefitYear1.textContent = nf.format(netYear1);
+      roiYear1.textContent = isFinite(roi) ? (roi * 100).toFixed(0) + ' %' : '–';
+      paybackMonths.textContent = isFinite(payback) ? nfDec.format(payback) + ' mnd' : 'ikke beregnbar';
+    }
+
+    // Handlers
+    document.getElementById('calcBtn').addEventListener('click', calc);
+    document.getElementById('resetBtn').addEventListener('click', function () {
+      // Delay to allow browser to reset values first
+      setTimeout(calc, 0);
+    });
+
+    // Live-oppdatering på input
+    document.querySelectorAll('#roiForm input').forEach(el => {
+      el.addEventListener('input', calc);
+    });
+
+    // Init
+    calc();
+  })();
+</script>
       
       <!-- CTA under tjenester -->
       <div class="mt-10 flex items-center justify-center">
